@@ -17,12 +17,7 @@ services:
       MYSQL_ROOT_PASSWORD: rootpw
       MYSQL_DATABASE: tipster
       MYSQL_USER: tipster
-      MYSQL_PASSWORD: tipster
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
+      MYSQL_PASSWORD: tipsters
     networks:
       - backend
 
