@@ -2,7 +2,6 @@ package delivery
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/encasol/tipsterchat/model"
 	"github.com/encasol/tipsterchat/service"
 	"github.com/gorilla/mux"
