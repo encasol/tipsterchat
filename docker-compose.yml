@@ -17,7 +17,7 @@ services:
       MYSQL_ROOT_PASSWORD: rootpw
       MYSQL_DATABASE: tipster
       MYSQL_USER: tipster
-      MYSQL_PASSWORD: tipsters
+      MYSQL_PASSWORD: tipster
     networks:
       - backend
 
