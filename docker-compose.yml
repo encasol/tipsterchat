@@ -1,0 +1,48 @@
+# Docker Compose file Reference (https://docs.docker.com/compose/compose-file/)
+
+version: '3'
+
+# Define services
+services:
+
+  mysql:
+    container_name: mysql
+    build:
+      context: .
+      dockerfile: DockerfileSQL
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpw
+      MYSQL_DATABASE: tipster
+      MYSQL_USER: tipster
+      MYSQL_PASSWORD: tipster
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - backend
+
+  # App Service
+  app:
+    # Configuration for building the docker image for the service
+    container_name: app
+    build:
+      context: . # Use an image built from the specified dockerfile in the current directory.
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080" # Forward the exposed port 8080 on the container to port 8080 on the host machine
+    restart: unless-stopped
+    depends_on:
+      - mysql
+    environment:
+      WAIT_HOSTS: mysql:3306
+    networks: # Networks to join (Services on the same network can communicate with each other using their name)
+      - backend
+
+# Networks to be created to facilitate communication between containers
+networks:
+  backend:
