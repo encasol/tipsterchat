@@ -19,7 +19,7 @@ func main() {
 
 	repo := repository.MySqlTipRepository{Connection: connectionSql}
 	svc := service.TipService{TipRepo: repo}
-	httpHandler := delivery.HttpTipHandler{TipService: svc}
+	httpHandler := delivery.HttpTipHandler{TipService: svc, Json: delivery.JsonDecoder{}}
 	fmt.Println("Configuration Done")
 	httpHandler.ListenAndServe("localhost", 8080)
 

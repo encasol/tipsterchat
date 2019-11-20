@@ -5,7 +5,7 @@ import (
 	"github.com/encasol/tipsterchat/repository"
 )
 
-type ITipService interface {
+type AbstractTipService interface {
 	ListTips() ([]model.Tip, error)
 	AddTip(tip model.Tip) error
 }
