@@ -1,4 +1,4 @@
-# Foobar
+# TipsterChat
 
 Prueba para tipsterchar
 
@@ -9,5 +9,3 @@ To run:
 ```bash
 docker-compose up
 ```
-
-## Usage
